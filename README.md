@@ -1,5 +1,4 @@
-# Elicitation or Expansion? 
-# Demystifying Gains from Agent Harness Optimization
+# Elicitation or Expansion? Demystifying Gains from Agent Harness Optimization
 
 <p align="center">
   Younghyun Kim<sup>1*</sup>, Wooseok Seo<sup>2*</sup>, Minseo Kim<sup>3</sup>, Seunghyuk Oh<sup>1</sup>, Minjae Lee<sup>1</sup>,<br>
