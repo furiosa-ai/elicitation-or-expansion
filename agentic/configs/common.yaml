@@ -1,0 +1,32 @@
+# Shared defaults, deep-merged under configs/<run>.yaml by scripts/create_run.py.
+solver:
+  model: gpt-oss-120b
+  api_base: http://localhost:8000/v1         # placeholder; AGENTIC_SOLVER_API_BASE overrides
+  api_key_env: AGENTIC_SOLVER_API_KEY         # runtime only; unset/empty uses the local placeholder
+  temperature: 0.0
+  top_p: null
+  max_tokens: 4096
+  reasoning_effort: medium
+  timeout_s: 600
+  cache: true                                # per-run disk cache (paths.llm_cache); safe at temperature 0
+proposer:
+  model: claude-opus-5
+  effort: max
+  image: agentic-proposer:v1
+  timeout_s: 3000
+  cpus: 8
+  memory: 16g
+  candidates_per_iteration: 2
+  allow_solver_access: true                  # host.docker.internal -> solver/retriever for prototyping
+  network: null                              # docker default bridge; "none" would also cut Anthropic API access
+  oauth_env: CLAUDE_CODE_OAUTH_TOKEN
+  prototype_max_items: 20                    # eval.max_items inside the sandbox
+search:
+  iterations: 20
+  smoke_items: 2
+eval:
+  concurrency: 16
+  item_timeout_s: 1800
+  split_timeout_s: 14400
+audit:
+  warn_patterns: {}

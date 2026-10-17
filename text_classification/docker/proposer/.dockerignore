@@ -1,0 +1,4 @@
+# Build context: text_classification/docker/proposer/ (see the repository README).
+# This image has no local COPY or ADD inputs. Docker still sends the Dockerfile
+# and this ignore file; exclude every other file from the build context.
+**

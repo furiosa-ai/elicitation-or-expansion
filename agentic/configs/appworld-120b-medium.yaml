@@ -1,0 +1,25 @@
+# AppWorld, GPT-OSS-120B, medium reasoning effort.
+# run_id defaults to appworld-120b-medium-seed0; pass --run-id appworld-120b-medium-seed1 for the other run.
+# Merged over configs/common.yaml by scripts/create_run.py; endpoints are placeholders.
+run_id: appworld-120b-medium-seed0
+domain: appworld
+description: "AppWorld: autonomous app-API tasks solved by writing Python in a REPL. Metric: Task Goal Completion. Split roles (disjoint prepare/search): train_prepare 30 (10 scenarios, harness prepare pool) / train_search 60 (20 scenarios, proposer-visible search set) / dev 57 = selection (hidden) / test_normal 168 = held-out test. Scenario-level, difficulty-stratified split of the official train set."
+baselines: [react_official]
+budgets:
+  per_item: {max_calls: 50, max_output_tokens: 100000, max_seconds: 2400}
+  prepare: {max_calls: 3000, max_seconds: 7200}
+domain_config:
+  appworld_root: null
+  max_steps: 50
+  random_seed: 100
+  raise_on_extra_parameters: true
+  splits: {train: train_prepare, val: train_search, selection: dev, test: test_normal}
+eval:
+  concurrency: 6
+  item_timeout_s: 2700
+search:
+  smoke_items: 1
+audit:
+  warn_patterns:
+    hardcoded_api_call: "apis\\.[a-z_]+\\.[a-z_]+\\("
+    dataset_name_mention: "(?i)appworld|test_normal|test_challenge"

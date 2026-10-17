@@ -1,0 +1,33 @@
+# HotpotQA, Qwen3-8B, tight caps (4 solver calls / 2 retrievals / k<=7).
+# run_id defaults to hotpotqa-8b-seed0; pass --run-id hotpotqa-8b-seed1 or hotpotqa-8b-seed2 for the other runs.
+# Merged over configs/common.yaml by scripts/create_run.py; endpoints are placeholders.
+run_id: hotpotqa-8b-seed0
+domain: hotpotqa
+description: "HotpotQA (fullwiki) multi-hop QA. Metric: answer exact match (DSPy normalization). Fixed BM25 retriever over 5.2M wiki17 abstracts. Splits follow GEPA/LangProBe: 150 train (prepare pool) / 300 search set / 300 selection (hidden) / 300 held-out test. Solver aligned with GEPA: Qwen3-8B, thinking on, temperature 0.6 / top_p 0.95 / top_k 20, 16k context. INTERACTION-DEPTH-MATCHED RUN: every candidate must stay within the seed program's interaction depth - at most 4 LLM calls, at most 2 retrieval calls and k <= 7 passages per retrieval, per item (the framework enforces these caps; exceeding one fails the item, and k above 7 is silently clipped to 7). Improve accuracy through what the calls say and do: instructions, reasoning structure, query formulation, evidence selection and presentation, answer formatting, or prepare-time learning from the train split - never by adding calls or widening retrieval."
+baselines: [multihop_baseline]
+solver:
+  model: qwen3-8b
+  api_base: http://localhost:8000/v1   # placeholder for the vLLM endpoint; AGENTIC_SOLVER_API_BASE overrides
+  temperature: 0.6
+  top_p: 0.95
+  top_k: 20
+  max_tokens: 8192
+  reasoning_effort: null
+budgets:
+  per_item: {max_calls: 4, max_output_tokens: 40000, max_seconds: 900}
+  prepare: {max_calls: 3000, max_seconds: 7200}
+domain_config:
+  retriever_url: http://localhost:8001   # placeholder for domains/hotpotqa/retriever_server.py
+  retriever_k_max: 7
+  max_retrieval_calls: 2
+search:
+  iterations: 20
+  smoke_items: 2
+  selection_top_n: 5
+eval:
+  concurrency: 48
+  item_timeout_s: 1200
+  split_timeout_s: 14400
+audit:
+  warn_patterns:
+    dataset_name_mention: "(?i)hotpot|wikipedia dump|langprobe|gepa"

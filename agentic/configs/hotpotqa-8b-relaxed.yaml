@@ -1,0 +1,33 @@
+# HotpotQA, Qwen3-8B, relaxed caps (12 solver calls / 12 retrievals / k<=20).
+# run_id defaults to hotpotqa-8b-relaxed-seed0; pass --run-id hotpotqa-8b-relaxed-seed1 or hotpotqa-8b-relaxed-seed2 for the other runs.
+# Merged over configs/common.yaml by scripts/create_run.py; endpoints are placeholders.
+run_id: hotpotqa-8b-relaxed-seed0
+domain: hotpotqa
+description: "HotpotQA (fullwiki) multi-hop QA. Metric: answer exact match (DSPy normalization). Fixed BM25 retriever over 5.2M wiki17 abstracts. Splits follow GEPA/LangProBe: 150 train (prepare pool) / 300 search set / 300 selection (hidden) / 300 held-out test. Solver aligned with GEPA: Qwen3-8B, thinking on, temperature 0.6 / top_p 0.95 / top_k 20, 16k context."
+baselines: [multihop_baseline]
+solver:
+  model: qwen3-8b
+  api_base: http://localhost:8000/v1   # placeholder for the vLLM endpoint; AGENTIC_SOLVER_API_BASE overrides
+  temperature: 0.6
+  top_p: 0.95
+  top_k: 20
+  max_tokens: 8192
+  reasoning_effort: null
+budgets:
+  per_item: {max_calls: 12, max_output_tokens: 40000, max_seconds: 900}
+  prepare: {max_calls: 3000, max_seconds: 7200}
+domain_config:
+  retriever_url: http://localhost:8001   # placeholder for domains/hotpotqa/retriever_server.py
+  retriever_k_max: 20
+  max_retrieval_calls: 12
+search:
+  iterations: 20
+  smoke_items: 2
+  selection_top_n: 5
+eval:
+  concurrency: 48
+  item_timeout_s: 1200
+  split_timeout_s: 14400
+audit:
+  warn_patterns:
+    dataset_name_mention: "(?i)hotpot|wikipedia dump|langprobe|gepa"

@@ -1,0 +1,27 @@
+# Local credentials (examples are kept)
+.env
+.env.*
+*.env
+!.env.example
+
+# Python and uv
+__pycache__/
+*.pyc
+.venv/
+.pytest_cache/
+
+# Created when the code runs
+/runs/
+agentic/runs/
+agentic/data/raw/
+agentic/data/splits/
+agentic/data/splits_test/
+agentic/data/index/
+agentic/data/appworld_root/
+agentic/domains/appworld/prompts/
+text_classification/logs/
+text_classification/results/
+text_classification/data/*/
+
+# AppWorld candidate archives are excluded from this public release.
+/harnesses/appworld/

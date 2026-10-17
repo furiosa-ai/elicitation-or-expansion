@@ -1,0 +1,34 @@
+{
+  "dataset_public_name": "hotpot_qa/fullwiki",
+  "upstream_split": "train",
+  "raw_n_rows": 90447,
+  "raw_order": "original order of the upstream split",
+  "regions_zero_based_end_exclusive": {
+    "test": [
+      0,
+      36178
+    ],
+    "train": [
+      72357,
+      90447
+    ],
+    "validation_and_selection": [
+      36178,
+      72357
+    ]
+  },
+  "sampling": {
+    "selection": "random.Random(2).sample(validation_region excluding sampled validation IDs, 300)",
+    "test": "random.Random(1).sample(test_region, 300)",
+    "train": "random.Random(1).sample(train_region, 150)",
+    "validation": "random.Random(1).sample(validation_region, 300)"
+  },
+  "split_roles": {
+    "selection": "Held away from proposer; chooses selected harness from the frozen candidate pool.",
+    "test": "Held away from proposer; final evaluation only.",
+    "train": "Proposer-visible preparation and few-shot pool.",
+    "validation": "Proposer-visible adaptive search evaluation."
+  },
+  "difficulty": "Original benchmark level field: easy, medium, hard; independent of evaluated harness outcomes.",
+  "question_type": "Original benchmark type field: bridge or comparison; distinct from difficulty."
+}

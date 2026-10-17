@@ -1,0 +1,43 @@
+dataset:
+  num_train: 200
+  num_val: 50
+  num_test: 100
+  overrides:
+    USPTO:
+      num_train: 50
+      num_val: 30
+      num_test: 100
+    Symptom2Disease:
+      num_train: 200
+      num_val: 50
+      num_test: 212
+    LawBench:
+      num_train: 200
+      num_val: 50
+      num_test: 100
+inner_loop:
+  mode: online
+  num_epochs: 1
+  temperature: 0.0
+  eval_interval: 0
+  batch_size: 1
+  seed: 42
+models:
+- model: gpt-oss-20b
+  api_base: http://localhost:8000/v1
+  max_tokens: 16384
+benchmark:
+  seeds:
+  - 42
+  concurrency: 3
+  eval_workers: 1
+  job_timeout_seconds: 14400
+datasets:
+- USPTO
+- Symptom2Disease
+- LawBench
+memory_systems:
+  baselines:
+  - no_memory
+  - fewshot_all
+  proposed: []

@@ -1,0 +1,6 @@
+# Build context: agentic/ (see the repository README).
+# Only the dependency manifests are local COPY inputs. Docker sends the selected
+# Dockerfile and this ignore file separately, even though ** excludes them here.
+**
+!pyproject.toml
+!uv.lock
