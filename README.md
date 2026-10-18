@@ -13,14 +13,14 @@
   <a href="https://furiosa-air.github.io/elicitation-or-expansion/"><img alt="Project" src="https://img.shields.io/static/v1?label=Project&message=Page&color=blue&logo=github-pages"></a>
   <!-- TODO: link the arXiv abstract and change the message to the arXiv ID once the preprint is out. -->
   <img alt="arXiv" src="https://img.shields.io/static/v1?label=arXiv&message=coming%20soon&color=lightgrey&logo=arxiv">
-  <!-- TODO: link the Hugging Face dataset and change the message to "Hugging Face" once it is published. -->
-  <img alt="Dataset" src="https://img.shields.io/static/v1?label=Dataset&message=coming%20soon&color=lightgrey&logo=huggingface">
+  <a href="https://huggingface.co/datasets/furiosa-ai/elicitation-or-expansion-trajectories"><img alt="Dataset" src="https://img.shields.io/static/v1?label=Dataset&message=Hugging%20Face&color=yellow&logo=huggingface"></a>
 </p>
 
 This repository contains the code that runs the harness optimizations in the paper and the candidate harnesses
 produced by the text-classification and HotpotQA runs. Generated AppWorld candidate snapshots are excluded because
 their comments may contain protected benchmark material; the AppWorld optimization framework and public baseline
-port are included. The rollouts are released separately as a Hugging Face dataset.
+port are included. The rollouts are released separately as a
+[Hugging Face dataset](https://huggingface.co/datasets/furiosa-ai/elicitation-or-expansion-trajectories).
 
 The proposer (Claude Opus 5 in Claude Code, effort max, auto-memory disabled) runs in an unprivileged Docker container
 that sees only the run's checkout; the solver is any OpenAI-compatible endpoint (vLLM). Each run is 20 iterations with
