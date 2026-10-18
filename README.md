@@ -10,7 +10,7 @@
 </p>
 
 <p align="center">
-  <a href="https://furiosa-air.github.io/elicitation-or-expansion/"><img alt="Project" src="https://img.shields.io/static/v1?label=Project&message=Page&color=blue&logo=github-pages"></a>
+  <a href="https://furiosa-air.github.io/elicitation-or-expansion"><img alt="Project" src="https://img.shields.io/static/v1?label=Project&message=Page&color=blue&logo=github-pages"></a>
   <!-- TODO: link the arXiv abstract and change the message to the arXiv ID once the preprint is out. -->
   <img alt="arXiv" src="https://img.shields.io/static/v1?label=arXiv&message=coming%20soon&color=lightgrey&logo=arxiv">
   <a href="https://huggingface.co/datasets/furiosa-ai/elicitation-or-expansion-trajectories"><img alt="Dataset" src="https://img.shields.io/static/v1?label=Dataset&message=Hugging%20Face&color=yellow&logo=huggingface"></a>
@@ -157,4 +157,5 @@ candidates once on the test split, which is never used for selection.
 
 ## License
 
-[MIT](LICENSE). Third-party code and dataset terms are listed in [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
+[MIT](LICENSE). The files and components listed in [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md)
+remain under their own licenses. Dataset terms are also listed there.

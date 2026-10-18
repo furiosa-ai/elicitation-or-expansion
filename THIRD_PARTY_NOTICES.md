@@ -1,6 +1,7 @@
 # Third-party notices
 
-The package is licensed under the MIT License in [LICENSE](LICENSE). The components below keep their own licenses.
+The package is licensed under the MIT License in [LICENSE](LICENSE).
+The files and components listed below remain under their own licenses.
 
 | Path | Component | Relation |
 |---|---|---|
