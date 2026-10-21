@@ -11,8 +11,7 @@
 
 <p align="center">
   <a href="https://furiosa-air.github.io/elicitation-or-expansion"><img alt="Project" src="https://img.shields.io/static/v1?label=Project&message=Page&color=blue&logo=github-pages"></a>
-  <!-- TODO: link the arXiv abstract and change the message to the arXiv ID once the preprint is out. -->
-  <img alt="arXiv" src="https://img.shields.io/static/v1?label=arXiv&message=coming%20soon&color=lightgrey&logo=arxiv">
+  <a href="https://arxiv.org/abs/2610.27889"><img alt="arXiv" src="https://img.shields.io/static/v1?label=arXiv&message=2610.27889&color=b31b1b&logo=arxiv"></a>
   <a href="https://huggingface.co/datasets/furiosa-ai/elicitation-or-expansion-trajectories"><img alt="Dataset" src="https://img.shields.io/static/v1?label=Dataset&message=Hugging%20Face&color=yellow&logo=huggingface"></a>
 </p>
 
@@ -124,15 +123,14 @@ Test results do not affect selection.
 
 ## Citation
 
-<!-- TODO: fill in the arXiv ID once the preprint is out. -->
-
 ```bibtex
 @article{kim2026elicitation,
   title   = {Elicitation or Expansion? Demystifying Gains from Agent Harness Optimization},
   author  = {Kim, Younghyun and Seo, Wooseok and Kim, Minseo and Oh, Seunghyuk and
              Lee, Minjae and Kim, Donghoon and Koo, Hyung Il and Kim, Jaehyung and Kang, Wonjun},
-  journal = {arXiv preprint arXiv:[ARXIV ID]},
-  year    = {2026}
+  journal = {arXiv preprint arXiv:2610.27889},
+  year    = {2026},
+  url     = {https://arxiv.org/abs/2610.27889}
 }
 ```
 
